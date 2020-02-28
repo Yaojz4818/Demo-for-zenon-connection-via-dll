@@ -1,0 +1,42 @@
+﻿<UserControl 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            
+             xmlns:ClassC1="clr-namespace:ClassC1;assembly=ClassC1" 
+            
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ClassC1:otherclass x:Key="otherclassDataSource" d:IsDataSource="True"/>
+        <ClassC1:Student x:Key="StudentDataSource" d:IsDataSource="True"/>
+        <ZoomPercentageConverter x:Key="ZoomPercentageConverter"/>
+        <AlternationConverter x:Key="AlternationConverter"/>
+        <Storyboard x:Key="OnLoaded1"/>
+        <Storyboard x:Key="Storyboard1"/>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="OnLoaded1_BeginStoryboard" Storyboard="{StaticResource OnLoaded1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Viewbox Stretch="Fill" d:DataContext="{d:DesignData /SampleData/StudentSampleData.xaml}">
+        <Grid Height="300" Width="300">
+            <Rectangle x:Name="RealBar" Fill="#FF28EB6F" HorizontalAlignment="Right" Margin="0,0,22.872,0" Stroke="#FF0EF979" Width="{Binding Text, ElementName=RealWeight}" RadiusY="8.491" RadiusX="8.491" VerticalAlignment="Bottom" MaxWidth="100" StrokeThickness="5" MaxHeight="{Binding BarHeight, Mode=OneWayToSource}" Height="{Binding Text, BindsDirectlyToSource=True, ElementName=RealHeight}"/>
+            <TextBox x:Name="RealHeight" Height="20" Margin="0,81.743,65.574,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Background="#FF3E64F5"  Foreground="#FFF4E2E2" HorizontalAlignment="Right" Width="80" FontSize="14" DataContext="{Binding Source={StaticResource StudentDataSource}}" Text="{Binding Realdisplay}"/>
+            <TextBox x:Name="RealWeight" Height="20" Margin="0,171.123,65.574,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" TextAlignment="Center" Background="#FFF8ECAB" Foreground="#FF4A76F8" HorizontalAlignment="Right" Width="80"/>
+            <TextBox x:Name="MaxHeightBar" Height="18.338" Margin="0,0,187.093,88.491" TextWrapping="Wrap" Text="300" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Right" Width="80" DataContext="{Binding Source={StaticResource StudentDataSource}}"/>
+            <TextBox x:Name="MinLimit" Height="18.338" Margin="32.907,0,0,218.509" TextWrapping="Wrap" Text="{Binding Min, BindsDirectlyToSource=True, Mode=TwoWay}" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Left" Width="80" DataContext="{Binding Source={StaticResource StudentDataSource}}"/>
+            <TextBox x:Name="MaxLimit" Height="19.071" Margin="32.907,0,0,152.096" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFF15912" HorizontalAlignment="Left" Width="80" DataContext="{Binding Source={StaticResource StudentDataSource}}" Text="300"/>
+            <Label x:Name="label" Content="Min. Temp" Margin="32.907,26.017,187.093,246.648" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_1" Content="Act. BarLen." Margin="154.426,32.39,65.574,0" Foreground="#FF1607EB" Height="27.335" VerticalAlignment="Top"/>
+            <TextBox x:Name="Real" Height="18.338" Margin="0,0,187.093,29.462" TextWrapping="Wrap" Text="150" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Right" Width="80" DataContext="{Binding Source={StaticResource StudentDataSource}}"/>
+            <Label x:Name="label_2" Content="Act. BarWei." Margin="154.426,129.099,65.574,143.566" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_3" Content="Max. Temp" Margin="32.907,91.002,187.093,181.663" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_4" Content="Bar Height" Margin="32.907,155.977,187.093,116.688" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_5" Content="Cur. Temp" Margin="32.907,218.548,187.093,54.117" Foreground="#FF0B1BED"/>
+
+        </Grid>
+    </Viewbox>
+</UserControl>

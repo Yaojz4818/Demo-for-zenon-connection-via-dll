@@ -1,0 +1,9 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Sankey="clr-namespace:Sankey;assembly=SankeyDiagramControl"
+        >
+    <Viewbox x:Name="COPADATA" Stretch="Fill">
+        <Sankey:SankeyDiagram x:Name="ELEMENT"/>
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,13 @@
+﻿<UserControl 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dataGridLibrary="clr-namespace:WpfControlLibrary4;assembly=WpfControlLibrary4">
+
+    <Grid x:Name="Grid1">
+        <dataGridLibrary:UserControl Name="DataGridControl" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</UserControl>

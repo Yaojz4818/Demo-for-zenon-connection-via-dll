@@ -1,0 +1,64 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:ClassC1="clr-namespace:ClassC1;assembly=ClassC1" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="WpfApp1.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ClassC1:Student x:Key="StudentDataSource" d:IsDataSource="True"/>
+        <Storyboard x:Key="OnClick1"/>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button"/>
+    </Window.Triggers>
+    <Grid DataContext="{Binding Source={StaticResource StudentDataSource}}">
+        <Grid Margin="110.391,10,109.609,12.5">
+            <Rectangle x:Name="RealBar" Fill="#FF28EB6F" HorizontalAlignment="Right" Margin="0,0,22.872,0" Stroke="#FF0EF979" Width="{Binding Text, ElementName=RealWeight}" RadiusY="8.491" RadiusX="8.491" VerticalAlignment="Bottom" MaxWidth="100" StrokeThickness="5" MaxHeight="{Binding BarHeight, Mode=OneWayToSource}" Height="{Binding Text, BindsDirectlyToSource=True, ElementName=RealHeight}"/>
+            <TextBox x:Name="RealHeight" Height="20" Margin="0,81.743,65.574,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Background="#FF3E64F5"  Foreground="#FFF4E2E2" HorizontalAlignment="Right" Width="80" FontSize="14" Text="{Binding Realdisplay, Mode=TwoWay}"/>
+            <TextBox x:Name="RealWeight" Height="20" Margin="0,171.123,65.574,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" TextAlignment="Center" Background="#FFF8ECAB" Foreground="#FF4A76F8" HorizontalAlignment="Right" Width="80">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBox x:Name="MaxHeightBar" Height="18.338" Margin="0,0,187.093,88.491" TextWrapping="Wrap" Text="{Binding BarHeight, Mode=TwoWay}" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Right" Width="80"/>
+            <TextBox x:Name="MinLimit" Height="18.338" Margin="32.907,0,0,218.509" TextWrapping="Wrap" Text="{Binding Min, Mode=TwoWay}" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Left" Width="80"/>
+            <TextBox x:Name="MaxLimit" Height="19.071" Margin="32.907,0,0,152.096" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFF15912" HorizontalAlignment="Left" Width="80" Text="{Binding Max, Mode=TwoWay}"/>
+            <Label x:Name="label" Content="Min. Temp" Margin="32.907,26.017,187.093,246.648" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_1" Content="Act. BarLen." Margin="154.426,32.39,65.574,0" Foreground="#FF1607EB" Height="27.335" VerticalAlignment="Top"/>
+            <TextBox x:Name="Real" Height="18.338" Margin="0,0,187.093,29.462" TextWrapping="Wrap" Text="{Binding Real, Mode=TwoWay}" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#FFFA4A0F" HorizontalAlignment="Right" Width="80">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <ei:CallMethodAction/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Label x:Name="label_2" Content="Act. BarWei." Margin="154.426,129.099,65.574,143.566" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_3" Content="Max. Temp" Margin="32.907,91.002,187.093,181.663" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_4" Content="Bar Height" Margin="32.907,155.977,187.093,116.688" Foreground="#FF0B1BED"/>
+            <Label x:Name="label_5" Content="Cur. Temp" Margin="32.907,218.548,187.093,54.117" Foreground="#FF0B1BED"/>
+
+        </Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="25.474" Margin="445.055,255.883,0,0" VerticalAlignment="Top" Width="56.907" Command="{Binding Mode=OneWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction/>
+                </i:EventTrigger>
+                <ei:DataTrigger>
+                    <i:Interaction.Behaviors>
+                        <ei:ConditionBehavior>
+                            <ei:ConditionalExpression>
+                                <ei:ComparisonCondition/>
+                            </ei:ConditionalExpression>
+                        </ei:ConditionBehavior>
+                    </i:Interaction.Behaviors>
+                    <ei:CallMethodAction/>
+                </ei:DataTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </Grid>
+</Window>
